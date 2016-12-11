@@ -48,8 +48,8 @@ class m161112_213055_transportlogistics_tables extends Migration
             'driver_id' => $this->integer(3),
             'client_id' => $this->integer(4)->notNull(),
             'address_id' => $this->integer()->notNull(),
-            'transport_date' => $this->date(),
-            'transport_time' => $this->string(),
+            'transporting_date' => $this->date(),
+            'transporting_time' => $this->string(),
             'note' => $this->string(),
             'responsible_manager' => $this->integer()->notNull(),
         ], $tableOptions);

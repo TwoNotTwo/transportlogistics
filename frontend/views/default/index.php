@@ -5,7 +5,7 @@ use common\modules\transportlogistics\frontend\assets\TransportlogisticsAsset;
 TransportlogisticsAsset::register($this);
 $this->title = 'Развозки';
 ?>
-
+<!--
 <div class="col-lg-12 delivery__new-record-box">
     <div>Добавление записи</div>
     <table class="delivery__new-record-box__table">
@@ -32,20 +32,20 @@ $this->title = 'Развозки';
     </table>
     <input type="button" value="Добавить запись"/>
 </div>
-
+-->
 
 <div class="toolbar-top">
 
     <div class="col-lg-4 col-sm-4 driver-box">
-        <!--
-        <select class="btn driver-box__-select">
+
+        <select class="btn driver-box__select">
             <option>Все водители</option>
             <option>Пименов</option>
             <option>Деграф</option>
             <option>Проскурняк</option>
             <option>Меробов</option>
         </select>
-        -->
+
     </div>
 
     <div class="col-lg-4 col-sm-4">
@@ -75,147 +75,139 @@ $this->title = 'Развозки';
 
                     <table class="calendar-box__table">
                         <thead>
-                        <tr class="calendar-box__table__week">
-                            <td>Пн</td>
-                            <td>Вт</td>
-                            <td>Ср</td>
-                            <td>Чт</td>
-                            <td>Пт</td>
-                            <td>Сб</td>
-                            <td>Вс</td>
-                        </tr>
+                            <tr class="calendar-box__table__week">
+                                <td>Пн</td>
+                                <td>Вт</td>
+                                <td>Ср</td>
+                                <td>Чт</td>
+                                <td>Пт</td>
+                                <td>Сб</td>
+                                <td>Вс</td>
+                            </tr>
                         </thead>
-
-                        <tbody class="calendar-box__table__tbody">
-
-                        </tbody>
+                        <tbody class="calendar-box__table__tbody"></tbody>
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
+
 </div> <!-- end toolbar-top -->
-
-
-
 
 <div class="col-lg-12 col-sm-12 delivery">
 
-
     <div class="delivery-box">
         <div class="delivery-box__driver">Пименов</div>
-            <table class="delivery-box__point__table">
-                <thead class="delivery-box__point__table__thead">
-                    <tr>
-                        <td>№</td>
-                        <td>Клиент</td>
-                        <td>Адрес доставки</td>
-                        <td>Время</td>
-                        <td>Объем</td>
-                        <td>Примечание</td>
-                        <td>Менеджер</td>
-                    </tr>
-                </thead>
-                <tbody class="delivery-box__point__table__tbody">
-                    <tr>
-                        <td class="delivery-box__point__table__tbody__row-number">1</td>
-                        <td class="delivery-box__point__table__tbody__client">Ульба Групп</td>
-                        <td class="delivery-box__point__table__tbody__address">Казахсатан. г. Москва, Лианозовский проезд , д.6</td>
-                        <td class="delivery-box__point__table__tbody__time">10:00 - 17:00</td>
-                        <td class="delivery-box__point__table__tbody__size">32к+33к+3к+6к(5п)</td>
-                        <td class="delivery-box__point__table__tbody__note">Везем и сдаем на палетах</td>
-                        <td class="delivery-box__point__table__tbody__manager">Мауль</td>
-                    </tr>
+        <table class="delivery-box__point__table">
+            <thead class="delivery-box__point__table__thead">
+                <tr>
+                    <td>№</td>
+                    <td>Клиент</td>
+                    <td>Адрес доставки</td>
+                    <td>Время</td>
+                    <td>Объем</td>
+                    <td>Примечание</td>
+                    <td>Менеджер</td>
+                </tr>
+            </thead>
+            <tbody class="delivery-box__point__table__tbody">
+                <tr>
+                    <td class="delivery-box__point__table__tbody__row-number">1</td>
+                    <td class="delivery-box__point__table__tbody__client">Ульба Групп</td>
+                    <td class="delivery-box__point__table__tbody__address">Казахсатан. г. Москва, Лианозовский проезд , д.6</td>
+                    <td class="delivery-box__point__table__tbody__time">10:00 - 17:00</td>
+                    <td class="delivery-box__point__table__tbody__size">32к+33к+3к+6к(5п)</td>
+                    <td class="delivery-box__point__table__tbody__note">Везем и сдаем на палетах</td>
+                    <td class="delivery-box__point__table__tbody__manager">Мауль</td>
+                </tr>
 
-                    <tr>
-                        <td class="delivery-box__point__table__tbody__row-number">2</td>
-                        <td class="delivery-box__point__table__tbody__client">Зайцева</td>
-                        <td class="delivery-box__point__table__tbody__address">Склад сервис, Коровинское шоссе ,д 35, стр2</td>
-                        <td class="delivery-box__point__table__tbody__time"></td>
-                        <td class="delivery-box__point__table__tbody__size">15к</td>
-                        <td class="delivery-box__point__table__tbody__note"></td>
-                        <td class="delivery-box__point__table__tbody__manager">Кузнецова</td>
-                    </tr>
+                <tr>
+                    <td class="delivery-box__point__table__tbody__row-number">2</td>
+                    <td class="delivery-box__point__table__tbody__client">Зайцева</td>
+                    <td class="delivery-box__point__table__tbody__address">Склад сервис, Коровинское шоссе ,д 35, стр2</td>
+                    <td class="delivery-box__point__table__tbody__time"></td>
+                    <td class="delivery-box__point__table__tbody__size">15к</td>
+                    <td class="delivery-box__point__table__tbody__note"></td>
+                    <td class="delivery-box__point__table__tbody__manager">Кузнецова</td>
+                </tr>
 
-                    <tr>
-                        <td class="delivery-box__point__table__tbody__row-number">3</td>
-                        <td class="delivery-box__point__table__tbody__client">Моспосуда</td>
-                        <td class="delivery-box__point__table__tbody__address">Проспект Буденого д.37</td>
-                        <td class="delivery-box__point__table__tbody__time"></td>
-                        <td class="delivery-box__point__table__tbody__size">28к</td>
-                        <td class="delivery-box__point__table__tbody__note"></td>
-                        <td class="delivery-box__point__table__tbody__manager">Хошаба</td>
-                    </tr>
+                <tr>
+                    <td class="delivery-box__point__table__tbody__row-number">3</td>
+                    <td class="delivery-box__point__table__tbody__client">Моспосуда</td>
+                    <td class="delivery-box__point__table__tbody__address">Проспект Буденого д.37</td>
+                    <td class="delivery-box__point__table__tbody__time"></td>
+                    <td class="delivery-box__point__table__tbody__size">28к</td>
+                    <td class="delivery-box__point__table__tbody__note"></td>
+                    <td class="delivery-box__point__table__tbody__manager">Хошаба</td>
+                </tr>
 
-                    <tr>
-                        <td class="delivery-box__point__table__tbody__row-number">4</td>
-                        <td class="delivery-box__point__table__tbody__client">Поларшинова</td>
-                        <td class="delivery-box__point__table__tbody__address">Деловые линии </td>
-                        <td class="delivery-box__point__table__tbody__time"></td>
-                        <td class="delivery-box__point__table__tbody__size">4к</td>
-                        <td class="delivery-box__point__table__tbody__note"></td>
-                        <td class="delivery-box__point__table__tbody__manager">Генукова</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div
+                <tr>
+                    <td class="delivery-box__point__table__tbody__row-number">4</td>
+                    <td class="delivery-box__point__table__tbody__client">Поларшинова</td>
+                    <td class="delivery-box__point__table__tbody__address">Деловые линии </td>
+                    <td class="delivery-box__point__table__tbody__time"></td>
+                    <td class="delivery-box__point__table__tbody__size">4к</td>
+                    <td class="delivery-box__point__table__tbody__note"></td>
+                    <td class="delivery-box__point__table__tbody__manager">Генукова</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="delivery-box">
         <div class="delivery-box__driver">Деграф</div>
         <table class="delivery-box__point__table">
             <thead class="delivery-box__point__table__thead">
-            <tr>
-                <td>№</td>
-                <td>Клиент</td>
-                <td>Адрес доставки</td>
-                <td>Время</td>
-                <td>Объем</td>
-                <td>Примечание</td>
-                <td>Менеджер</td>
-            </tr>
+                <tr>
+                    <td>№</td>
+                    <td>Клиент</td>
+                    <td>Адрес доставки</td>
+                    <td>Время</td>
+                    <td>Объем</td>
+                    <td>Примечание</td>
+                    <td>Менеджер</td>
+                </tr>
             </thead>
             <tbody class="delivery-box__point__table__tbody">
-            <tr>
-                <td class="delivery-box__point__table__tbody__row-number">1</td>
-                <td class="delivery-box__point__table__tbody__client">Озон</td>
-                <td class="delivery-box__point__table__tbody__address">Москва</td>
-                <td class="delivery-box__point__table__tbody__time"></td>
-                <td class="delivery-box__point__table__tbody__size">38к(2п)</td>
-                <td class="delivery-box__point__table__tbody__note"></td>
-                <td class="delivery-box__point__table__tbody__manager">Мауль</td>
-            </tr>
+                <tr>
+                    <td class="delivery-box__point__table__tbody__row-number">1</td>
+                    <td class="delivery-box__point__table__tbody__client">Озон</td>
+                    <td class="delivery-box__point__table__tbody__address">Москва</td>
+                    <td class="delivery-box__point__table__tbody__time"></td>
+                    <td class="delivery-box__point__table__tbody__size">38к(2п)</td>
+                    <td class="delivery-box__point__table__tbody__note"></td>
+                    <td class="delivery-box__point__table__tbody__manager">Мауль</td>
+                </tr>
 
-            <tr>
-                <td class="delivery-box__point__table__tbody__row-number">2</td>
-                <td class="delivery-box__point__table__tbody__client">Профскарлет</td>
-                <td class="delivery-box__point__table__tbody__address">Алтуфьевское ш</td>
-                <td class="delivery-box__point__table__tbody__time"></td>
-                <td class="delivery-box__point__table__tbody__size">9к</td>
-                <td class="delivery-box__point__table__tbody__note"></td>
-                <td class="delivery-box__point__table__tbody__manager">Мауль</td>
-            </tr>
+                <tr>
+                    <td class="delivery-box__point__table__tbody__row-number">2</td>
+                    <td class="delivery-box__point__table__tbody__client">Профскарлет</td>
+                    <td class="delivery-box__point__table__tbody__address">Алтуфьевское ш</td>
+                    <td class="delivery-box__point__table__tbody__time"></td>
+                    <td class="delivery-box__point__table__tbody__size">9к</td>
+                    <td class="delivery-box__point__table__tbody__note"></td>
+                    <td class="delivery-box__point__table__tbody__manager">Мауль</td>
+                </tr>
 
-            <tr>
-                <td class="delivery-box__point__table__tbody__row-number">3</td>
-                <td class="delivery-box__point__table__tbody__client">Мир Посуды</td>
-                <td class="delivery-box__point__table__tbody__address">Рейл Континент Югорский проезд</td>
-                <td class="delivery-box__point__table__tbody__time"></td>
-                <td class="delivery-box__point__table__tbody__size">40к</td>
-                <td class="delivery-box__point__table__tbody__note"></td>
-                <td class="delivery-box__point__table__tbody__manager">Мауль</td>
-            </tr>
+                <tr>
+                    <td class="delivery-box__point__table__tbody__row-number">3</td>
+                    <td class="delivery-box__point__table__tbody__client">Мир Посуды</td>
+                    <td class="delivery-box__point__table__tbody__address">Рейл Континент Югорский проезд</td>
+                    <td class="delivery-box__point__table__tbody__time"></td>
+                    <td class="delivery-box__point__table__tbody__size">40к</td>
+                    <td class="delivery-box__point__table__tbody__note"></td>
+                    <td class="delivery-box__point__table__tbody__manager">Мауль</td>
+                </tr>
 
-            <tr>
-                <td class="delivery-box__point__table__tbody__row-number">4</td>
-                <td class="delivery-box__point__table__tbody__client">Кудрявцева</td>
-                <td class="delivery-box__point__table__tbody__address">ТК Спектр, Ярославское шоссе, 2Е</td>
-                <td class="delivery-box__point__table__tbody__time"></td>
-                <td class="delivery-box__point__table__tbody__size">4к</td>
-                <td class="delivery-box__point__table__tbody__note">Можно отвезти в четверг</td>
-                <td class="delivery-box__point__table__tbody__manager">Шугай</td>
-            </tr>
+                <tr>
+                    <td class="delivery-box__point__table__tbody__row-number">4</td>
+                    <td class="delivery-box__point__table__tbody__client">Кудрявцева</td>
+                    <td class="delivery-box__point__table__tbody__address">ТК Спектр, Ярославское шоссе, 2Е</td>
+                    <td class="delivery-box__point__table__tbody__time"></td>
+                    <td class="delivery-box__point__table__tbody__size">4к</td>
+                    <td class="delivery-box__point__table__tbody__note">Можно отвезти в четверг</td>
+                    <td class="delivery-box__point__table__tbody__manager">Шугай</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -224,15 +216,15 @@ $this->title = 'Развозки';
         <div class="delivery-box__driver">Меробов</div>
         <table class="delivery-box__point__table">
             <thead class="delivery-box__point__table__thead">
-            <tr>
-                <td>№</td>
-                <td>Клиент</td>
-                <td>Адрес доставки</td>
-                <td>Время</td>
-                <td>Объем</td>
-                <td>Примечание</td>
-                <td>Менеджер</td>
-            </tr>
+                <tr>
+                    <td>№</td>
+                    <td>Клиент</td>
+                    <td>Адрес доставки</td>
+                    <td>Время</td>
+                    <td>Объем</td>
+                    <td>Примечание</td>
+                    <td>Менеджер</td>
+                </tr>
             </thead>
             <tbody>
                 <tr>
@@ -298,4 +290,5 @@ $this->title = 'Развозки';
         </table>
     </div>
 
-</div>
+</div> <!-- end of delivery -->
+

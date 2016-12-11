@@ -17,8 +17,8 @@ function resizeDeliveryList(){
     var body_height = $('body').height();
     var deliveryList = $('.delivery');
     var footer_height = $('.footer').height();
-    var x= 150;
-    if ($('.delivery__new-record-box').length > 0) x = 250;
+    var x= 250;
+   // if ($('.delivery__new-record-box').length > 0) x = 250;
     var deliveryList_height = body_height-footer_height-x;
 
     $(deliveryList).height(deliveryList_height);
