@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m161112_213055_transportlogistics_tables extends Migration
+class m161212_102648_transportlogistics_tables extends Migration
 {
     public function up()
     {
@@ -17,7 +17,7 @@ class m161112_213055_transportlogistics_tables extends Migration
         $this->createTable('{{%transportlogistics_driver}}', [
             'id' => $this->primaryKey(),
             'drivername' => $this->string()->notNull(),
-            'status' => $this->smallInteger(2)->defaultValue(1),
+            'status' => $this->smallInteger(2)->defaultValue(10),
         ], $tableOptions);
 
 
@@ -27,7 +27,7 @@ class m161112_213055_transportlogistics_tables extends Migration
         $this->createTable('{{%transportlogistics_client}}', [
             'id' => $this->primaryKey(),
             'clientname' => $this->string()->notNull(),
-            'status' => $this->smallInteger(2)->defaultValue(1),
+            'status' => $this->smallInteger(2)->defaultValue(10),
         ], $tableOptions);
 
 
@@ -51,7 +51,7 @@ class m161112_213055_transportlogistics_tables extends Migration
             'transporting_date' => $this->date(),
             'transporting_time' => $this->string(),
             'note' => $this->string(),
-            'responsible_manager' => $this->integer()->notNull(),
+            'responsible_manager' => $this->integer()->notNull(), //кто из менеджеров (сотрудников) добавил запись
         ], $tableOptions);
 
 
@@ -66,14 +66,5 @@ class m161112_213055_transportlogistics_tables extends Migration
             'description' => $this->string()->notNull(),
         ], $tableOptions);
 
-
-    }
-
-    public function down()
-    {
-
-        //echo "m161112_213055_transportlogistics_tables cannot be reverted.\n";
-
-        return false;
     }
 }
