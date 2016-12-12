@@ -1,11 +1,16 @@
 <?php
 
 use common\modules\transportlogistics\frontend\assets\TransportlogisticsAsset;
+use common\modules\transportlogistics\common\models\TransportlogisticsDriver;
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 
 TransportlogisticsAsset::register($this);
 $this->title = 'Развозки';
 ?>
-<!--
+
+
 <div class="col-lg-12 delivery__new-record-box">
     <div>Добавление записи</div>
     <table class="delivery__new-record-box__table">
@@ -32,21 +37,25 @@ $this->title = 'Развозки';
     </table>
     <input type="button" value="Добавить запись"/>
 </div>
--->
+
 
 <div class="toolbar-top">
 
+
     <div class="col-lg-4 col-sm-4 driver-box">
-
-        <select class="btn driver-box__select">
-            <option>Все водители</option>
-            <option>Пименов</option>
-            <option>Деграф</option>
-            <option>Проскурняк</option>
-            <option>Меробов</option>
-        </select>
-
+<!-- спсиок водителей -->
+    <?php
+        $drivers = TransportlogisticsDriver::find()->orderBy('drivername ASC')->all();
+        if (count($drivers) > 1) {
+            $items = [0 => 'Все водители'] + ArrayHelper::map($drivers, 'id', 'drivername');
+        } else {
+            $items = ArrayHelper::map($drivers, 'id', 'drivername');
+        }
+        echo Html::dropDownList('drivers','0' ,$items, ['class' => 'btn driver-box__select']);
+    ?>
+<!-- спсиок водителей -->
     </div>
+
 
     <div class="col-lg-4 col-sm-4">
         <div style=" font-size: 1em; font-size: 1.3em; height: 46px; line-height: 46px;">
