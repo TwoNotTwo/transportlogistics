@@ -10,33 +10,36 @@ TransportlogisticsAsset::register($this);
 $this->title = 'Развозки';
 ?>
 
-
-<div class="col-lg-12 delivery__new-record-box">
-    <div>Добавление записи</div>
-    <table class="delivery__new-record-box__table">
-        <thead class="delivery__new-record-box__table__thead">
-        <tr>
-            <td>Клиент</td>
-            <td>Адрес доставки</td>
-            <td>Дата</td>
-            <td>Время</td>
-            <td>Объем</td>
-            <td>Примечание</td>
-        </tr>
-        </thead>
-        <tbody class="delivery__new-record-box__table__tbody">
-        <tr>
-            <td class="delivery__new-record-box__client"><input class="delivery__new-record-box__client__input"></td>
-            <td class="delivery__new-record-box__address"><input class="delivery__new-record-box__address__input"></td>
-            <td class="delivery__new-record-box__date"><input class="delivery__new-record-box__date__input"></td>
-            <td class="delivery__new-record-box__time"><input class="delivery__new-record-box__time__input"></td>
-            <td class="delivery__new-record-box__size"><input class="delivery__new-record-box__size__input"></td>
-            <td class="delivery__new-record-box__note"><input class="delivery__new-record-box__note__input"></td>
-        </tr>
-        </tbody>
-    </table>
-    <input type="button" value="Добавить запись"/>
-</div>
+<?php if (Yii::$app->user->can('tl-permission-createRequest')){
+  echo '
+      <div class="col-lg-12 delivery__new-record-box">
+        <div>Добавление записи</div>
+        <table class="delivery__new-record-box__table">
+            <thead class="delivery__new-record-box__table__thead">
+            <tr>
+                <td>Клиент</td>
+                <td>Адрес доставки</td>
+                <td>Дата</td>
+                <td>Время</td>
+                <td>Объем</td>
+                <td>Примечание</td>
+            </tr>
+            </thead>
+            <tbody class="delivery__new-record-box__table__tbody">
+            <tr>
+                <td class="delivery__new-record-box__client"><input class="delivery__new-record-box__client__input"></td>
+                <td class="delivery__new-record-box__address"><input class="delivery__new-record-box__address__input"></td>
+                <td class="delivery__new-record-box__date"><input class="delivery__new-record-box__date__input"></td>
+                <td class="delivery__new-record-box__time"><input class="delivery__new-record-box__time__input"></td>
+                <td class="delivery__new-record-box__size"><input class="delivery__new-record-box__size__input"></td>
+                <td class="delivery__new-record-box__note"><input class="delivery__new-record-box__note__input"></td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="button" value="Добавить запись"/>
+    </div>';
+}
+?>
 
 
 <div class="toolbar-top">
