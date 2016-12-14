@@ -37,6 +37,7 @@ class m161212_102648_transportlogistics_tables extends Migration
         $this->createTable('{{%transportlogistics_address}}', [
             'id' => $this->primaryKey(),
             'address' => $this->string()->notNull(),
+            'status' => $this->smallInteger(2)->defaultValue(10),
         ], $tableOptions);
 
 
@@ -53,6 +54,7 @@ class m161212_102648_transportlogistics_tables extends Migration
             'size_cargo' => $this->string(),
             'note' => $this->string(),
             'responsible_manager' => $this->integer()->notNull(), //кто из менеджеров (сотрудников) добавил запись
+            'status' => $this->smallInteger(2)->defaultValue(10),
         ], $tableOptions);
 
 
@@ -65,6 +67,7 @@ class m161212_102648_transportlogistics_tables extends Migration
             'user_id' => $this->integer()->notNull(),
             'action_datetime' => $this->dateTime(),
             'description' => $this->string()->notNull(),
+            'status' => $this->smallInteger(2)->defaultValue(10),
         ], $tableOptions);
 
     }

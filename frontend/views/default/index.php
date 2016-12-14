@@ -17,31 +17,32 @@ $driver_array = $driverModel::find()->all();
 <?php if (Yii::$app->user->can('transportlogistics/create-request')){ ?>
         <div class="panel panel-default delivery__new-record-box">
             <div class="panel-heading">Добавление заявки</div>
-        <div class="panel-body">
-        <?php
-          $form = ActiveForm::begin([
-              'id' => 'transportlogistics__new-record-form',
-              'options' => [
-                  'class' => 'form-horizontal',
-              ],
-              'fieldConfig' => [
-                  'template' => "{label}\n{input}",
-              ],
-              'action' => 'transportlogistics/default/create-request',
-          ]);
-        ?>
+            <div class="panel-body">
+            <?php
+              $form = ActiveForm::begin([
+                  'id' => 'transportlogistics__new-record-form',
+                  'options' => [
+                      'class' => 'form-horizontal',
+                  ],
+                  'fieldConfig' => [
+                      'template' => "{label}\n{input}",
+                  ],
+                  'action' => 'transportlogistics/default/create-request',
+              ]);
+            ?>
 
-        <div class="delivery__new-record-box__input-group">
-            <?= $form->field($clientModel, 'clientname'); ?>
-            <?= $form->field($addressModel, 'address'); ?>
-            <?= $form->field($recordModel, 'transporting_date')?>
-            <?= $form->field($recordModel, 'transporting_time'); ?>
-            <?= $form->field($recordModel, 'size_cargo'); ?>
-            <?= $form->field($recordModel, 'note'); ?>
+            <div class="delivery__new-record-box__input-group">
+                <?= $form->field($clientModel, 'clientname')->textInput(['autocomplete' => 'off']); ?>
 
-        </div>
-            <?= Html::submitButton('Добавить', ['class' => 'btn btn-success dtn-addRecord ', 'title' => 'Добавить заявку']); ?>
-        <?php ActiveForm::end(); ?>
+                <?= $form->field($addressModel,'address')->textInput(['autocomplete' => 'off']); ?>
+                <?= $form->field($recordModel, 'transporting_date')->textInput(['autocomplete' => 'off']);?>
+                <?= $form->field($recordModel, 'transporting_time')->textInput(['autocomplete' => 'off']); ?>
+                <?= $form->field($recordModel, 'size_cargo')->textInput(['autocomplete' => 'off']); ?>
+                <?= $form->field($recordModel, 'note')->textInput(['autocomplete' => 'off']); ?>
+
+            </div>
+                <?= Html::submitButton('Добавить', ['class' => 'btn btn-success dtn-addRecord ', 'title' => 'Добавить заявку']); ?>
+            <?php ActiveForm::end(); ?>
 
             <!--
             <div class='input-group date' id='datetimepicker2'>
@@ -79,10 +80,8 @@ $driver_array = $driverModel::find()->all();
             </tbody>
         </table>-->
 
+            </div>
         </div>
-    </div>
-
-
 <?php  } ?>
 
 
@@ -370,6 +369,6 @@ $driver_array = $driverModel::find()->all();
             </tbody>
         </table>
     </div>
-
+-->
 </div> <!-- end of delivery -->
 

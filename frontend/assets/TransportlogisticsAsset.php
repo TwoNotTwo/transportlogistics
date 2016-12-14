@@ -17,6 +17,7 @@ class TransportlogisticsAsset extends AssetBundle
     public $css = [
         'css/transportlogistics.css',
         'css/calendar.css',
+        'css/autocomplete.css',
 
     ];
     public $js = [
