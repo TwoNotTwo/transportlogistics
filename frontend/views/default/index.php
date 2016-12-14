@@ -1,19 +1,59 @@
 <?php
 
 use common\modules\transportlogistics\frontend\assets\TransportlogisticsAsset;
-use common\modules\transportlogistics\common\models\TransportlogisticsDriver;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
 TransportlogisticsAsset::register($this);
 $this->title = 'Развозки';
+
+$clients_array = $clientModel::find()->all();
+$address_array = $addressModel::find()->all();
+$driver_array = $driverModel::find()->all();
+
 ?>
 
-<?php if (Yii::$app->user->can('tl-permission-createRequest')){
-  echo '
-      <div class="col-lg-12 delivery__new-record-box">
-        <div>Добавление записи</div>
+<?php if (Yii::$app->user->can('transportlogistics/create-request')){ ?>
+        <div class="panel panel-default delivery__new-record-box">
+            <div class="panel-heading">Добавление заявки</div>
+        <div class="panel-body">
+        <?php
+          $form = ActiveForm::begin([
+              'id' => 'transportlogistics__new-record-form',
+              'options' => [
+                  'class' => 'form-horizontal',
+              ],
+              'fieldConfig' => [
+                  'template' => "{label}\n{input}",
+              ],
+              'action' => 'transportlogistics/default/create-request',
+          ]);
+        ?>
+
+        <div class="delivery__new-record-box__input-group">
+            <?= $form->field($clientModel, 'clientname'); ?>
+            <?= $form->field($addressModel, 'address'); ?>
+            <?= $form->field($recordModel, 'transporting_date')?>
+            <?= $form->field($recordModel, 'transporting_time'); ?>
+            <?= $form->field($recordModel, 'size_cargo'); ?>
+            <?= $form->field($recordModel, 'note'); ?>
+
+        </div>
+            <?= Html::submitButton('Добавить', ['class' => 'btn btn-success dtn-addRecord ', 'title' => 'Добавить заявку']); ?>
+        <?php ActiveForm::end(); ?>
+
+            <!--
+            <div class='input-group date' id='datetimepicker2'>
+                <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+            </div>
+
+            -->
+
+          <!--
         <table class="delivery__new-record-box__table">
             <thead class="delivery__new-record-box__table__thead">
             <tr>
@@ -26,28 +66,53 @@ $this->title = 'Развозки';
             </tr>
             </thead>
             <tbody class="delivery__new-record-box__table__tbody">
-            <tr>
-                <td class="delivery__new-record-box__client"><input class="delivery__new-record-box__client__input"></td>
-                <td class="delivery__new-record-box__address"><input class="delivery__new-record-box__address__input"></td>
-                <td class="delivery__new-record-box__date"><input class="delivery__new-record-box__date__input"></td>
-                <td class="delivery__new-record-box__time"><input class="delivery__new-record-box__time__input"></td>
-                <td class="delivery__new-record-box__size"><input class="delivery__new-record-box__size__input"></td>
-                <td class="delivery__new-record-box__note"><input class="delivery__new-record-box__note__input"></td>
-            </tr>
+                <tr>-->
+
+          <!--      <td class="delivery__new-record-box__client">--> <!-- <input class="delivery__new-record-box__client__input"></td> -->
+          <!--      <td class="delivery__new-record-box__address">--><!--<input class="delivery__new-record-box__address__input"></td>-->
+          <!--      <td class="delivery__new-record-box__date">--><!--<input class="delivery__new-record-box__date__input"></td>-->
+          <!--      <td class="delivery__new-record-box__time">--><!--<input class="delivery__new-record-box__time__input"></td>-->
+          <!--<td class="delivery__new-record-box__size">--><!--<input class="delivery__new-record-box__size__input"></td>-->
+                   <!-- <td class="delivery__new-record-box__note">--><!--<input class="delivery__new-record-box__note__input"></td>-->
+
+            <!--    </tr>
             </tbody>
-        </table>
-        <input type="button" value="Добавить запись"/>
-    </div>';
-}
-?>
+        </table>-->
+
+        </div>
+    </div>
+
+
+<?php  } ?>
+
+
 
 
 <div class="toolbar-top">
 
+    <?php
+    /*
+        $records = $recordModel::find()->where(['driver_id' => null])->all();
+        if (count($records) > null) {
+            $list = '<div>';
+            foreach ($records as $item) {
+                $list .= '<span>'.$clients_array[$item['client_id']]['clientname'].'</span>';
+                $list .= '<span>'.$address_array[$item['address_id']]['address'].'</span>';
+                $list .= '<span>'.$item['size_cargo'].'</span>';
+                $list .= '<span>'.$item['note'].'</span>';
 
+            }
+            $list .= '</div>';
+            echo $list;
+        }
+    */
+    ?>
+<!--
     <div class="col-lg-4 col-sm-4 driver-box">
 <!-- спсиок водителей -->
     <?php
+
+    /*
         $drivers = TransportlogisticsDriver::find()->orderBy('drivername ASC')->all();
         if (count($drivers) > 1) {
             $items = [0 => 'Все водители'] + ArrayHelper::map($drivers, 'id', 'drivername');
@@ -55,8 +120,11 @@ $this->title = 'Развозки';
             $items = ArrayHelper::map($drivers, 'id', 'drivername');
         }
         echo Html::dropDownList('drivers','0' ,$items, ['class' => 'btn driver-box__select']);
+    */
     ?>
 <!-- спсиок водителей -->
+
+<!--
     </div>
 
 
@@ -105,11 +173,12 @@ $this->title = 'Развозки';
     </div>
 
 </div> <!-- end toolbar-top -->
-
+<!--
 <div class="col-lg-12 col-sm-12 delivery">
 
     <div class="delivery-box">
-        <div class="delivery-box__driver">Пименов</div>
+        <div class="col-lg-6 delivery-box__driver">Пименов</div>
+            <?php // Html::a('', '#', ['class'=> 'btn btn-default glyphicon glyphicon-print transportlogistics_print-list-requests', 'title' => 'Распечатать']);//title' => Yii::t('cashbox', 'Печатать')]); ?>
         <table class="delivery-box__point__table">
             <thead class="delivery-box__point__table__thead">
                 <tr>

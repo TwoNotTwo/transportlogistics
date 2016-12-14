@@ -1,12 +1,54 @@
+
+//список клиентов
+var client_list;
+
+
 $(document).ready(function(){
     welcome();
     resizeDeliveryList();
-
+    getClientList();
 
     $(document).on('focusout', '.delivery__new-record-box__date__input', function(){
         $(this).val(dateMask($(this).val()));
-    })
+    });
+
+    //автозаполнение
+    /** клиент */
+    $(document).on('input', '.delivery__new-record-box__client__input', function (event) {
+        if (event.keyCode != KEY_TAB && event.keyCode != KEY_SHIFT) {
+
+            $(this).ludwig_autocomplete({
+                list: client_list,
+                minChar: 2,
+                displayList: true,
+                capitalLetter: true
+            }, event);
+        }
+    });
+    /** клиент */
+
 });
+
+
+function getClientList(){
+    $.ajax({
+        url: '/transportlogistics/default/get-client-list',
+        type: 'POST',
+        async: false,
+        success: function(answer){
+            arr = createArrayFromString(answer);
+            setClientList(arr);
+        },
+        error: function(answer){
+            console.log('Ошибка получения списка клиентов. # '+answer);
+        }
+    });
+}
+
+function setClientList(arr){
+    client_list = arr;
+}
+
 
 
 $(window).resize(function(){

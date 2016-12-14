@@ -8,6 +8,7 @@ var KEY_DOWN = 40;
 var KEY_ENTER = 13;
 var KEY_ESC = 27;
 var KEY_TAB = 9;
+var KEY_SHIFT = 16;
 var KEY_BACKSPACE = 8;
 var KEY_DELETE = 46;
 /** клавиши */

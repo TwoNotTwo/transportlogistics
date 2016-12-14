@@ -25,9 +25,65 @@ body{
   padding: 0;
 }
 
+
 .delivery__new-record-box{
-  padding: 0;
+  .panel-heading{
+    padding: 2pt 15pt;
+  }
+  .panel-body{
+    padding-top: 2px;
+    padding-right: 4px;
+    padding-left: 4px;
+    padding-bottom: 4px;
+  }
 }
+.dtn-addRecord{
+  float: right;
+ // margin-right: 0.5pt;
+}
+
+//форма добавления заявки на отвоз товара
+.delivery__new-record-box__input-group{
+  div{
+    display: inline-block;
+  }
+
+  .form-group{
+    margin: 0 1pt 4pt 0;
+    input {
+      padding: 0 3pt;
+
+    }
+  }
+  .field-transportlogisticsclient-clientname{
+    margin-left: 1pt;
+  }
+  .field-transportlogisticsrecord-note{
+    margin-right: 0;
+  }
+}
+.field-transportlogisticsclient-clientname{
+  width: 150pt;
+}
+.field-transportlogisticsaddress-address{
+  width: 200pt;
+}
+
+.field-transportlogisticsrecord-transporting_date{
+  width: 70pt;
+}
+.field-transportlogisticsrecord-transporting_time{
+  widows: 70pt;
+}
+.field-transportlogisticsrecord-size_cargo{
+  width: 100pt;
+}
+.field-transportlogisticsrecord-note{
+  width: 184pt;
+
+}
+
+
 .delivery__new-record-box__table{
   width: 100%;
   td{
@@ -58,7 +114,6 @@ body{
 .delivery__new-record-box__address{}
 .delivery__new-record-box__date{
   width: 70pt;
-
 }
 .delivery__new-record-box__time{
   width: 70pt;
@@ -89,8 +144,16 @@ body{
   padding: 2pt;
 }
 
+//имя водителя в списке
 .delivery-box__driver{
   font-weight: bold;
+  line-height: 30px;
+}
+
+//распечатать заявки
+.transportlogistics_print-list-requests{
+  float: right;
+  padding: 2px 6px;
 }
 
 .delivery-box__point__table__thead{

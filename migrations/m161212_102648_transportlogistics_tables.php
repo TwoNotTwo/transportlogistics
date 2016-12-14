@@ -50,6 +50,7 @@ class m161212_102648_transportlogistics_tables extends Migration
             'address_id' => $this->integer()->notNull(),
             'transporting_date' => $this->date(),
             'transporting_time' => $this->string(),
+            'size_cargo' => $this->string(),
             'note' => $this->string(),
             'responsible_manager' => $this->integer()->notNull(), //кто из менеджеров (сотрудников) добавил запись
         ], $tableOptions);

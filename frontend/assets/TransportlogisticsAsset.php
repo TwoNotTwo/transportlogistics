@@ -23,9 +23,9 @@ class TransportlogisticsAsset extends AssetBundle
         'js/transportlogistics.js',
         'js/calendar.js',
         'js/helper.js',
-
-
+        'js/core_autocomplete.js',
     ];
+
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
