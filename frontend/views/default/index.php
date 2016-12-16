@@ -8,9 +8,9 @@ use yii\helpers\ArrayHelper;
 TransportlogisticsAsset::register($this);
 $this->title = 'Развозки';
 
-$clients_array = $clientModel::find()->all();
-$address_array = $addressModel::find()->all();
-$driver_array = $driverModel::find()->all();
+$clients_array = $clientModel::find()->orderBy(['clientname' => SORT_ASC] )->all();
+$address_array = $addressModel::find()->orderBy(['address' => SORT_ASC])->all();
+$driver_array = $driverModel::find()->orderBy(['drivername' => SORT_ASC])->all();
 
 ?>
 
@@ -31,6 +31,7 @@ $driver_array = $driverModel::find()->all();
               ]);
             ?>
 
+
             <div class="delivery__new-record-box__input-group">
                 <?= $form->field($clientModel, 'clientname')->textInput(['autocomplete' => 'off']); ?>
 
@@ -43,44 +44,6 @@ $driver_array = $driverModel::find()->all();
             </div>
                 <?= Html::submitButton('Добавить', ['class' => 'btn btn-success dtn-addRecord ', 'title' => 'Добавить заявку']); ?>
             <?php ActiveForm::end(); ?>
-
-            <!--
-            <div class='input-group date' id='datetimepicker2'>
-                <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-            </div>
-
-            -->
-
-          <!--
-        <table class="delivery__new-record-box__table">
-            <thead class="delivery__new-record-box__table__thead">
-            <tr>
-                <td>Клиент</td>
-                <td>Адрес доставки</td>
-                <td>Дата</td>
-                <td>Время</td>
-                <td>Объем</td>
-                <td>Примечание</td>
-            </tr>
-            </thead>
-            <tbody class="delivery__new-record-box__table__tbody">
-                <tr>-->
-
-          <!--      <td class="delivery__new-record-box__client">--> <!-- <input class="delivery__new-record-box__client__input"></td> -->
-          <!--      <td class="delivery__new-record-box__address">--><!--<input class="delivery__new-record-box__address__input"></td>-->
-          <!--      <td class="delivery__new-record-box__date">--><!--<input class="delivery__new-record-box__date__input"></td>-->
-          <!--      <td class="delivery__new-record-box__time">--><!--<input class="delivery__new-record-box__time__input"></td>-->
-          <!--<td class="delivery__new-record-box__size">--><!--<input class="delivery__new-record-box__size__input"></td>-->
-                   <!-- <td class="delivery__new-record-box__note">--><!--<input class="delivery__new-record-box__note__input"></td>-->
-
-            <!--    </tr>
-            </tbody>
-        </table>-->
-
-            </div>
         </div>
 <?php  } ?>
 
@@ -89,8 +52,9 @@ $driver_array = $driverModel::find()->all();
 
 <div class="toolbar-top">
 
+    <!-- список нераспределенных заявок-->
     <?php
-    /*
+
         $records = $recordModel::find()->where(['driver_id' => null])->all();
         if (count($records) > null) {
             $list = '<div>';
@@ -99,31 +63,27 @@ $driver_array = $driverModel::find()->all();
                 $list .= '<span>'.$address_array[$item['address_id']]['address'].'</span>';
                 $list .= '<span>'.$item['size_cargo'].'</span>';
                 $list .= '<span>'.$item['note'].'</span>';
-
             }
             $list .= '</div>';
             echo $list;
         }
-    */
     ?>
-<!--
+
     <div class="col-lg-4 col-sm-4 driver-box">
 <!-- спсиок водителей -->
     <?php
 
-    /*
-        $drivers = TransportlogisticsDriver::find()->orderBy('drivername ASC')->all();
-        if (count($drivers) > 1) {
-            $items = [0 => 'Все водители'] + ArrayHelper::map($drivers, 'id', 'drivername');
+        //$drivers = $driver_array;//$driverModel::find()->orderBy('drivername ASC')->all();
+        if (count($driver_array) > 1) {
+            $items = [0 => 'Все водители'] + ArrayHelper::map($driver_array, 'id', 'drivername');
         } else {
-            $items = ArrayHelper::map($drivers, 'id', 'drivername');
+            $items = ArrayHelper::map($driver_array, 'id', 'drivername');
         }
         echo Html::dropDownList('drivers','0' ,$items, ['class' => 'btn driver-box__select']);
-    */
     ?>
 <!-- спсиок водителей -->
 
-<!--
+
     </div>
 
 
@@ -172,12 +132,12 @@ $driver_array = $driverModel::find()->all();
     </div>
 
 </div> <!-- end toolbar-top -->
-<!--
-<div class="col-lg-12 col-sm-12 delivery">
 
+<div class="col-lg-12 col-sm-12 delivery">
+<div class="delivery-list">
     <div class="delivery-box">
         <div class="col-lg-6 delivery-box__driver">Пименов</div>
-            <?php // Html::a('', '#', ['class'=> 'btn btn-default glyphicon glyphicon-print transportlogistics_print-list-requests', 'title' => 'Распечатать']);//title' => Yii::t('cashbox', 'Печатать')]); ?>
+            <?= Html::a('', '#', ['class'=> 'btn btn-default glyphicon glyphicon-print transportlogistics_print-list-requests', 'title' => 'Распечатать']);//title' => Yii::t('cashbox', 'Печатать')]); ?>
         <table class="delivery-box__point__table">
             <thead class="delivery-box__point__table__thead">
                 <tr>
@@ -369,6 +329,6 @@ $driver_array = $driverModel::find()->all();
             </tbody>
         </table>
     </div>
--->
+</div>
 </div> <!-- end of delivery -->
 

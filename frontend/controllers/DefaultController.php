@@ -43,7 +43,7 @@ class DefaultController extends Controller
         $clientModel = new TransportlogisticsClient();
         $addressModel = new TransportlogisticsAddress();
 
-        $url = '/transportlogistics';
+        $url = 'transportlogistics';
         if ($clientModel->load(Yii::$app->request->post()) && $addressModel->load(Yii::$app->request->post()) && $recordModel->load(Yii::$app->request->post()) ){
 
             $client = TransportlogisticsClient::find()->where(['clientname' => $clientModel['clientname']] )->one();
@@ -53,15 +53,11 @@ class DefaultController extends Controller
                 $client = $clientModel->id;
             } else $client = $client->id;
 
-            //echo 'client = '.$client;
-
             $address = TransportlogisticsAddress::find()->where(['address' => $addressModel['address']])->one();
             if(count($address) == null) {
                 $addressModel->save();
                 $address = $addressModel->id;
             } else $address = $address->id;
-
-            //echo 'address = '.$address;
 
             $manager = Yii::$app->user->id;
 
@@ -72,6 +68,7 @@ class DefaultController extends Controller
         }
 
         $this->goBack($url);
+
 
     }
 

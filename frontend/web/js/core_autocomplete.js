@@ -43,6 +43,7 @@ $(document).ready(function(){
     /** при клике мыши на элементе списка его данные переносим в input*/
     $(document).on('click', OBJ_AUTOFILL_LIST+' li', function(event){
         $(document).trigger('clickOnListItem');
+        setAttrFromDropDownListItem();
     });
 
 
@@ -69,6 +70,11 @@ $(document).ready(function(){
         }
     });
     /** событие потери фокуса активным input */
+/*
+    $(document).bind('clickOnListItem', function (event) {
+        setAttrFromDropDownListItem();
+    });
+*/
 
 });
 
@@ -97,9 +103,9 @@ jQuery.fn.ludwig_autocomplete = function(options, event){
         //если список отображается (существует на странице)
         if (usingList()){
             event.preventDefault();
-
             var AL_countOfElements = $(OBJ_AUTOFILL_LIST+' li').length;
             var AL_indexOfActiveElement = $(OBJ_ACTIVE_LIST_ELEMENT).index();
+
 
             switch (event.keyCode) {
                 case KEY_UP:
@@ -225,7 +231,6 @@ function autoFill(input, selectText){
     sourceLen = sourceText.length;
     text = $(OBJ_AUTOFILL_LIST+' li:first').text();
 
-
     if (text.length >0) {
         input.val(text);
         input.attr(ATTR_RECID, $(OBJ_AUTOFILL_LIST+' li:first').attr(ATTR_RECID));
@@ -279,11 +284,9 @@ function findItems(userText, list){
     for (var i = 0; i < list.length; i++){
         var str = (list[i].length == 1) ? list[i][0] : list[i][1];
 
-
         var charPos = str.toLowerCase().indexOf(userText.toLowerCase());
 
         (charPos > -1) ? idItems.push([i,charPos]) : false;
-
     }
 
     (idItems.length > 0) ? idItems.sort(sort_charPos): false;
