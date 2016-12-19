@@ -35,6 +35,8 @@ $(document).ready(function(){
 
         if ($('.request__panel .panel-heading .icon').hasClass('glyphicon-chevron-down')){
             $('.request__panel .panel-heading .icon').attr('class', 'icon glyphicon glyphicon-chevron-up');
+            resizeRequestHeader();
+            resizeDeliveryList();
         } else {
             $('.request__panel .panel-heading .icon').attr('class', 'icon glyphicon glyphicon-chevron-down');
         }
@@ -182,7 +184,7 @@ function resizeDeliveryList(){
     var deliveryNewRecordBox_height = $('.delivery__new-record-box').height()+20;
     var toolBarTop_height = $('.toolbar-top').height();
     var request_height =$('.request__panel').height();
-    var newHeightDelivery = body_height-(footer_height+nav_height+deliveryNewRecordBox_height+toolBarTop_height + request_height) -100;
+    var newHeightDelivery = body_height-(footer_height+nav_height+deliveryNewRecordBox_height+toolBarTop_height + request_height) -150;
 
     /*
     console.log('bHeight ='+ body_height);
@@ -203,6 +205,30 @@ function resizeDeliveryList(){
 function getNextInput(currentInput){
     return $(currentInput).parents('div').next('div').children('input');
 }
+
+//подстраивает ширину ячеек шапки таблицы под ячеки таблицы с данными
+function resizeRequestHeader(){
+
+//массив ширин ячеек строки таблицы отчета
+    var widths = [];
+
+    //в цыкле обращаемся к каждой ячейки первой строки таблицы отчета и запоминаем ширину этой ячеки
+    $('.request__table__tbody tr:eq(0) td ').each(function() {
+        widths.push($(this)[0].getBoundingClientRect().width);
+    });
+
+    //подставляем сохраненные значения ширин ячеек первой строки таблицы в ячейки шапки таблицы
+    $('.request__table__thead__tr td:eq(0)').css('width', widths[0]);
+    $('.request__table__thead__tr td:eq(1)').css('width', widths[1]);
+    $('.request__table__thead__tr td:eq(2)').css('width', widths[2]);
+    $('.request__table__thead__tr td:eq(3)').css('width', widths[3]);
+    $('.request__table__thead__tr td:eq(4)').css('width', widths[4]);
+    $('.request__table__thead__tr td:eq(5)').css('width', widths[5]);
+    $('.request__table__thead__tr td:eq(6)').css('width', widths[6]);
+    //$('.request__table__thead tr td:eq(7)').css('width', widths[7]);
+}
+
+
 
 function welcome(){
     console.log('=== Развозки ===');

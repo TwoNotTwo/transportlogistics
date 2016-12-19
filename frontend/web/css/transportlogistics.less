@@ -20,10 +20,6 @@ body{
   }
 }
 
-
-
-
-
 .delivery__new-record-box{
   .panel-heading{
     padding: 2pt 15pt;
@@ -176,6 +172,17 @@ body{
   }
 }
 
+.request__panel{
+  //position: fixed;
+  //height: 100pt;
+  .panel-body{
+    //height: 100pt;
+    .request__table__tbody{
+      max-height: 170pt;
+    }
+  }
+}
+
 .request__table{
   width: 100%;
   td{
@@ -186,9 +193,19 @@ body{
 
 .request__table__thead {
   background: @color-thead;
+  display: block;
+  position: fixed;
+
   td {
     text-align: center;
   }
+}
+
+.request__table__tbody{
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: block;
+  margin-top: 20pt;
 }
 
 .request__table__tbody__client{
@@ -197,6 +214,7 @@ body{
 }
 
 .request__table__tbody__address{
+  width: 146pt;
 }
 
 .request__table__tbody__transporting-time{
@@ -309,7 +327,6 @@ body{
 .delivery-box__point__table__tbody__size{
   width: 100pt;
   text-align: center;
-
 }
 .delivery-box__point__table__tbody__note{
   width: 130pt;
@@ -318,5 +335,4 @@ body{
 .delivery-box__point__table__tbody__manager{
   width: 65pt;
   text-align: center;
-
 }

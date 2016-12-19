@@ -125,7 +125,7 @@ if (count($records) > null) { ?>
         <div class="panel-body">
             <table class="request__table">
                 <thead class="request__table__thead">
-                <tr>
+                <tr class="request__table__thead__tr">
                     <!--<td>№</td> -->
                     <td>Клиент</td>
                     <td>Адрес доставки</td>
@@ -175,7 +175,7 @@ if (count($records) > null) { ?>
 <div class="col-lg-12 col-sm-12 delivery">
 
     <div class="panel panel-default delivery-list__panel">
-        <div class="panel-heading">Развозки<div class="icon glyphicon glyphicon-chevron-down"></div></div>
+        <div class="panel-heading">Развозки<div class="icon glyphicon glyphicon-chevron-up"></div></div>
         <div class="panel-body">
             <div class="delivery-box">
                 <div class="col-lg-6 delivery-box__driver">Пименов</div>
