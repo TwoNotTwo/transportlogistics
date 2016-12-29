@@ -40,7 +40,7 @@ $driver_array = $driverModel::find()->orderBy(['drivername' => SORT_ASC])->all()
                 <?= $form->field($recordModel, 'transporting_date')->textInput(['autocomplete' => 'off']);?>
                 <?= $form->field($recordModel, 'transporting_time')->textInput(['autocomplete' => 'off']); ?>
                 <?= $form->field($recordModel, 'size_cargo')->textInput(['autocomplete' => 'off']); ?>
-                <?= $form->field($recordModel, 'note')->textInput(['autocomplete' => 'off']); ?>
+                <?= $form->field($recordModel, 'driver_note')->textInput(['autocomplete' => 'off']); ?>
             </div>
 
             <?= Html::submitButton('Добавить', ['class' => 'btn btn-success btn-sm dtn-addRecord ', 'pjax-data'=> true, 'title' => 'Добавить заявку']); ?>
@@ -156,7 +156,7 @@ if (count($records) > null) { ?>
                     $list .= '<td class="request__table__tbody__address">'.$address.'</td>';
                     $list .= '<td class="request__table__tbody__transporting-time">'.$item['transporting_time'].'</td>';
                     $list .= '<td class="request__table__tbody__size-cargo">'.$item['size_cargo'].'</td>';
-                    $list .= '<td class="request__table__tbody__note">'.$item['note'].'</td>';
+                    $list .= '<td class="request__table__tbody__driver-note">'.$item['driver-note'].'</td>';
                     $list .= '<td class="request__table__tbody__manager">'.$p_user.'</td>';
                     $list .= '<td class="request__table__tbody__driver">'.
                         Html::dropDownList('drivers','0' ,$items, []).
@@ -199,7 +199,7 @@ if (count($records) > null) { ?>
                         <td class="delivery-box__point__table__tbody__address">Казахсатан. г. Москва, Лианозовский проезд, д.6</td>
                         <td class="delivery-box__point__table__tbody__time">10:00 - 17:00</td>
                         <td class="delivery-box__point__table__tbody__size">32к+33к+3к+6к(5п)</td>
-                        <td class="delivery-box__point__table__tbody__note">Везем и сдаем на палетах</td>
+                        <td class="delivery-box__point__table__tbody__driver-note">Везем и сдаем на палетах</td>
                         <td class="delivery-box__point__table__tbody__manager">Мауль</td>
                     </tr>
 
@@ -209,7 +209,7 @@ if (count($records) > null) { ?>
                         <td class="delivery-box__point__table__tbody__address">Склад сервис, Коровинское шоссе, д.35, стр.2</td>
                         <td class="delivery-box__point__table__tbody__time"></td>
                         <td class="delivery-box__point__table__tbody__size">15к</td>
-                        <td class="delivery-box__point__table__tbody__note"></td>
+                        <td class="delivery-box__point__table__tbody__driver-note"></td>
                         <td class="delivery-box__point__table__tbody__manager">Кузнецова</td>
                     </tr>
 
@@ -219,7 +219,7 @@ if (count($records) > null) { ?>
                         <td class="delivery-box__point__table__tbody__address">Проспект Буденого д.37</td>
                         <td class="delivery-box__point__table__tbody__time"></td>
                         <td class="delivery-box__point__table__tbody__size">28к</td>
-                        <td class="delivery-box__point__table__tbody__note"></td>
+                        <td class="delivery-box__point__table__tbody__driver-note"></td>
                         <td class="delivery-box__point__table__tbody__manager">Хошаба</td>
                     </tr>
 
@@ -229,7 +229,7 @@ if (count($records) > null) { ?>
                         <td class="delivery-box__point__table__tbody__address">Деловые линии </td>
                         <td class="delivery-box__point__table__tbody__time"></td>
                         <td class="delivery-box__point__table__tbody__size">4к</td>
-                        <td class="delivery-box__point__table__tbody__note"></td>
+                        <td class="delivery-box__point__table__tbody__driver-note"></td>
                         <td class="delivery-box__point__table__tbody__manager">Генукова</td>
                     </tr>
                     </tbody>

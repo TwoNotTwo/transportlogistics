@@ -46,13 +46,17 @@ class m161212_102648_transportlogistics_tables extends Migration
          */
         $this->createTable('{{%transportlogistics_record}}', [
             'id' => $this->primaryKey(),
-            'driver_id' => $this->integer(3),
-            'client_id' => $this->integer(4)->notNull(),
-            'address_id' => $this->integer()->notNull(),
-            'transporting_date' => $this->date(),
-            'transporting_time' => $this->string(),
-            'size_cargo' => $this->string(),
-            'note' => $this->string(),
+            'driver_id' => $this->integer(),
+            'client_id' => $this->integer(),
+            'address_id' => $this->integer(),
+            'order_number' => $this->string(), //номер заказа
+            'order_date' => $this->string(), //дата заказа
+            'order_file' => $this->string(), //ссыдка на файл с опсианием заказа - накладная
+            'transporting_date' => $this->date(), //предполагаемая дата доставки
+            'transporting_time' => $this->string(), //пометка о времени доставки
+            'size_cargo' => $this->string(), //объем собранного заказа
+            //'common_note' => $this->string(), //премеяание для общего пользования
+            'driver_note' => $this->string(), //примечание ТОЛЬКО для водителя
             'responsible_manager' => $this->integer()->notNull(), //кто из менеджеров (сотрудников) добавил запись
             'status' => $this->smallInteger(2)->defaultValue(10),
         ], $tableOptions);
@@ -69,6 +73,13 @@ class m161212_102648_transportlogistics_tables extends Migration
             'description' => $this->string()->notNull(),
             'status' => $this->smallInteger(2)->defaultValue(10),
         ], $tableOptions);
+    }
 
+    public function down(){
+        $this->dropTable('{{%transportlogistics_driver}}');
+        $this->dropTable('{{%transportlogistics_client}}');
+        $this->dropTable('{{%transportlogistics_address}}');
+        $this->dropTable('{{%transportlogistics_record}}');
+        $this->dropTable('{{%transportlogistics_record_history}}');
     }
 }

@@ -13,7 +13,7 @@ use Yii;
  * @property integer $address_id
  * @property string $transporting_date
  * @property string $transporting_time
- * @property string $note
+ * @property string $driver_note
  * @property integer $responsible_manager
  */
 class TransportlogisticsRecord extends \yii\db\ActiveRecord
@@ -35,7 +35,7 @@ class TransportlogisticsRecord extends \yii\db\ActiveRecord
             [['driver_id', 'client_id', 'address_id', 'responsible_manager'], 'integer'],
             [['client_id', 'address_id', 'responsible_manager'], 'required'],
            // [['transporting_date'], 'safe'],
-            [['transporting_time', 'transporting_date', 'size_cargo', 'note'], 'string', 'max' => 255],
+            [['transporting_time', 'transporting_date', 'size_cargo', 'driver_note'], 'string', 'max' => 255],
         ];
     }
 
@@ -52,7 +52,7 @@ class TransportlogisticsRecord extends \yii\db\ActiveRecord
             'transporting_date' => 'Дата',
             'transporting_time' => 'Время',
             'size_cargo' => 'Объем',
-            'note' => 'Примечание',
+            'driver_note' => 'Примечание',
             'responsible_manager' => 'Менеджер',
         ];
     }

@@ -1,6 +1,8 @@
 #### Командя для создания необходимых таблиц в БД:
 yii migrate --migrationPath=@common/modules/transportlogistics/migrations/
 
+#### Удаление ранее созданных таблиц
+yii migrate/down  --migrationPath=@common/modules/transportlogistics/migrations/
 
 #### Используемые роли и их разрешения
 1. tl-role-guest - гость
