@@ -58,6 +58,7 @@ class m161212_102648_transportlogistics_tables extends Migration
             //'common_note' => $this->string(), //премеяание для общего пользования
             'driver_note' => $this->string(), //примечание ТОЛЬКО для водителя
             'responsible_manager' => $this->integer()->notNull(), //кто из менеджеров (сотрудников) добавил запись
+            'stage' => $this->integer()->defaultValue(1),
             'status' => $this->smallInteger(2)->defaultValue(10),
         ], $tableOptions);
 

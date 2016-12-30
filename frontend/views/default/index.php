@@ -4,24 +4,29 @@ use common\modules\transportlogistics\frontend\assets\TransportlogisticsAsset;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
+use common\modules\transportlogistics\common\models\TransportlogisticsRecord;
 //use yii\widgets\Pjax;
 
 TransportlogisticsAsset::register($this);
 $this->title = 'Развозки';
 
 
-$clients_array = $clientModel::find()->orderBy(['clientname' => SORT_ASC] )->all();
-$address_array = $addressModel::find()->orderBy(['address' => SORT_ASC])->all();
-$driver_array = $driverModel::find()->orderBy(['drivername' => SORT_ASC])->all();
+$clients_array = $clientModel::find()->all();
+$address_array = $addressModel::find()->all();
+$driver_array = $driverModel::find()->all();
+$manager_array = $managerModel::find()->all();
+$request_array = $recordModel::find()->orderBy(['driver_id' => SORT_ASC])->all();
 
 ?>
 
-<?php if (Yii::$app->user->can('transportlogistics/create-request')){ ?>
+<?php //if (Yii::$app->user->can('transportlogistics/create-request')) { ?>
     <div class="panel panel-default delivery__new-record-box">
-        <div class="panel-heading">Добавление заявки<div class="icon glyphicon glyphicon-chevron-down"></div></div>
+        <div class="panel-heading">Добавление заявки
+            <div class="icon glyphicon glyphicon-chevron-down"></div>
+        </div>
         <div class="panel-body">
             <?php
-          //  Pjax::begin([]);
+            //  Pjax::begin([]);
             $form = ActiveForm::begin([
                 'id' => 'transportlogistics__new-record-form',
                 'options' => [
@@ -36,19 +41,19 @@ $driver_array = $driverModel::find()->orderBy(['drivername' => SORT_ASC])->all()
             ?>
             <div class="delivery__new-record-box__input-group">
                 <?= $form->field($clientModel, 'clientname')->textInput(['autocomplete' => 'off']); ?>
-                <?= $form->field($addressModel,'address')->textInput(['autocomplete' => 'off']); ?>
-                <?= $form->field($recordModel, 'transporting_date')->textInput(['autocomplete' => 'off']);?>
+                <?= $form->field($addressModel, 'address')->textInput(['autocomplete' => 'off']); ?>
+                <?= $form->field($recordModel, 'transporting_date')->textInput(['autocomplete' => 'off']); ?>
                 <?= $form->field($recordModel, 'transporting_time')->textInput(['autocomplete' => 'off']); ?>
                 <?= $form->field($recordModel, 'size_cargo')->textInput(['autocomplete' => 'off']); ?>
                 <?= $form->field($recordModel, 'driver_note')->textInput(['autocomplete' => 'off']); ?>
             </div>
 
-            <?= Html::submitButton('Добавить', ['class' => 'btn btn-success btn-sm dtn-addRecord ', 'pjax-data'=> true, 'title' => 'Добавить заявку']); ?>
+            <?= Html::submitButton('Добавить', ['class' => 'btn btn-success btn-sm dtn-addRecord ', 'pjax-data' => true, 'title' => 'Добавить заявку']); ?>
             <?php ActiveForm::end(); ?>
             <?php // Pjax::end(); ?>
         </div>
     </div>
-<?php  } ?>
+<?php// } ?>
 
 
 
@@ -59,14 +64,16 @@ $driver_array = $driverModel::find()->orderBy(['drivername' => SORT_ASC])->all()
     <div class="col-lg-4 col-sm-4 driver-box">
         <!-- спсиок водителей -->
         <?php
-
+        if (count($driver_array) == 0){
+            echo '<span class="label label-warning">нет ни одного водителя</span>';
+        } else {
             if (count($driver_array) > 1) {
                 $items = [0 => 'Все водители'] + ArrayHelper::map($driver_array, 'id', 'drivername');
             } else {
                 $items = ArrayHelper::map($driver_array, 'id', 'drivername');
             }
-            echo Html::dropDownList('drivers','0' ,$items, ['class' => 'btn driver-box__select']);
-
+            echo Html::dropDownList('drivers', '0', $items, ['class' => 'btn driver-box__select']);
+        }
         ?>
         <!-- спсиок водителей -->
     </div>
@@ -77,7 +84,8 @@ $driver_array = $driverModel::find()->orderBy(['drivername' => SORT_ASC])->all()
             <div class="tool-bar__report-date-box" style="text-align: center;">
                 <span class="tool-bar__report-date-box__date"> <?= date('d.m.y'); ?> </span>
 
-                <span class="glyphicon glyphicon-calendar calendar-toggle" style="padding-left: 10pt; color:rgb(84, 84, 84);"></span>
+                <span class="glyphicon glyphicon-calendar calendar-toggle"
+                      style="padding-left: 10pt; color:rgb(84, 84, 84);"></span>
 
                 <div class="calendar-box">
                     <select class="calendar-box__month-select">
@@ -94,7 +102,7 @@ $driver_array = $driverModel::find()->orderBy(['drivername' => SORT_ASC])->all()
                         <option value="10">Ноябрь</option>
                         <option value="11">Декабрь</option>
                     </select>
-                    <input class="calendar-box__year-select" type="number" value="" min="2012" max="9999" size="4" />
+                    <input class="calendar-box__year-select" type="number" value="" min="2012" max="9999" size="4"/>
 
                     <table class="calendar-box__table">
                         <thead>
@@ -119,9 +127,12 @@ $driver_array = $driverModel::find()->orderBy(['drivername' => SORT_ASC])->all()
 <!-- список нераспределенных заявок-->
 <?php
 $records = $recordModel::find()->where(['driver_id' => null])->all();
-if (count($records) > null) { ?>
+if (count($records) > null) {
+    ?>
     <div class="panel panel-default request__panel">
-        <div class="panel-heading">Нераспределенные заявки<div class="icon glyphicon glyphicon-chevron-down"></div></div>
+        <div class="panel-heading">Нераспределенные заявки
+            <div class="icon glyphicon glyphicon-chevron-down"></div>
+        </div>
         <div class="panel-body">
             <table class="request__table">
                 <thead class="request__table__thead">
@@ -147,19 +158,19 @@ if (count($records) > null) { ?>
                     $p_user = $p_user['p_username'];
 
                     $client_name = $clientModel::find()->select('clientname')->where(['id' => $item['client_id']])->one();
-                    $client_name= $client_name['clientname'];
+                    $client_name = $client_name['clientname'];
 
                     $address = $addressModel::find()->select('address')->where(['id' => $item['address_id']])->one();
-                    $address= $address['address'];
+                    $address = $address['address'];
 
-                    $list .= '<tr><td class="request__table__tbody__client">'.$client_name.'</td>';
-                    $list .= '<td class="request__table__tbody__address">'.$address.'</td>';
-                    $list .= '<td class="request__table__tbody__transporting-time">'.$item['transporting_time'].'</td>';
-                    $list .= '<td class="request__table__tbody__size-cargo">'.$item['size_cargo'].'</td>';
-                    $list .= '<td class="request__table__tbody__driver-note">'.$item['driver-note'].'</td>';
-                    $list .= '<td class="request__table__tbody__manager">'.$p_user.'</td>';
-                    $list .= '<td class="request__table__tbody__driver">'.
-                        Html::dropDownList('drivers','0' ,$items, []).
+                    $list .= '<tr><td class="request__table__tbody__client">' . $client_name . '</td>';
+                    $list .= '<td class="request__table__tbody__address">' . $address . '</td>';
+                    $list .= '<td class="request__table__tbody__transporting-time">' . $item['transporting_time'] . '</td>';
+                    $list .= '<td class="request__table__tbody__size-cargo">' . $item['size_cargo'] . '</td>';
+                    $list .= '<td class="request__table__tbody__driver-note">' . $item['driver_note'] . '</td>';
+                    $list .= '<td class="request__table__tbody__manager">' . $p_user . '</td>';
+                    $list .= '<td class="request__table__tbody__driver">' .
+                        Html::dropDownList('drivers', '0', $items, []) .
                         '</td></tr>';
 
                 }
@@ -172,13 +183,28 @@ if (count($records) > null) { ?>
     </div>
 <?php } ?>
 
+<?php
+    $records = $recordModel::find()->andWhere('stage>1')->orderBy(['driver_id' => SORT_ASC])->all();
+    if (count($records) > 0){ ?>
 <div class="col-lg-12 col-sm-12 delivery">
 
     <div class="panel panel-default delivery-list__panel">
-        <div class="panel-heading">Развозки<div class="icon glyphicon glyphicon-chevron-up"></div></div>
+        <div class="panel-heading">Развозки
+            <div class="icon glyphicon glyphicon-chevron-up"></div>
+        </div>
+
         <div class="panel-body">
+<?php
+    $driver_id = 0;
+    for ($i=0; $i<count($records); $i++){
+        if ($driver_id != $records[$i]['driver_id']){
+            $driver_id = $records[$i]['driver_id'];
+            if ($i != 0){
+                echo '</tbody> </table> </div> ';
+            }
+?>
             <div class="delivery-box">
-                <div class="col-lg-6 delivery-box__driver">Пименов</div>
+                <div class="col-lg-6 delivery-box__driver"><?= $driver_array[$records[$i]['driver_id']- 1] ['drivername'] ?></div>
 
                 <table class="delivery-box__point__table">
                     <thead class="delivery-box__point__table__thead">
@@ -193,48 +219,21 @@ if (count($records) > null) { ?>
                     </tr>
                     </thead>
                     <tbody class="delivery-box__point__table__tbody">
+<?php  } ?>
+<!---
+Неправильно находит записи в массивах по индексам
+-->
                     <tr>
                         <td class="delivery-box__point__table__tbody__row-number">1</td>
-                        <td class="delivery-box__point__table__tbody__client">Ульба Групп</td>
-                        <td class="delivery-box__point__table__tbody__address">Казахсатан. г. Москва, Лианозовский проезд, д.6</td>
-                        <td class="delivery-box__point__table__tbody__time">10:00 - 17:00</td>
-                        <td class="delivery-box__point__table__tbody__size">32к+33к+3к+6к(5п)</td>
-                        <td class="delivery-box__point__table__tbody__driver-note">Везем и сдаем на палетах</td>
-                        <td class="delivery-box__point__table__tbody__manager">Мауль</td>
+                        <td class="delivery-box__point__table__tbody__client"><?= $clients_array[$records[$i]['client_id'] -1]['clientname']; ?></td>
+                        <td class="delivery-box__point__table__tbody__address"><?= $address_array[$records[$i]['address_id'] -1]['address']; ?></td>
+                        <td class="delivery-box__point__table__tbody__time"><?= $records[$i]['transporting_time']; ?></td>
+                        <td class="delivery-box__point__table__tbody__size"><?= $records[$i]['size_cargo']; ?></td>
+                        <td class="delivery-box__point__table__tbody__driver-note"><?= $records[$i]['driver_note']; ?></td>
+                        <td class="delivery-box__point__table__tbody__manager"><?= $manager_array[$records[$i]['responsible_manager'] -1]['p_username']; ?></td>
                     </tr>
+<?php } ?>
 
-                    <tr>
-                        <td class="delivery-box__point__table__tbody__row-number">2</td>
-                        <td class="delivery-box__point__table__tbody__client">Зайцева</td>
-                        <td class="delivery-box__point__table__tbody__address">Склад сервис, Коровинское шоссе, д.35, стр.2</td>
-                        <td class="delivery-box__point__table__tbody__time"></td>
-                        <td class="delivery-box__point__table__tbody__size">15к</td>
-                        <td class="delivery-box__point__table__tbody__driver-note"></td>
-                        <td class="delivery-box__point__table__tbody__manager">Кузнецова</td>
-                    </tr>
-
-                    <tr>
-                        <td class="delivery-box__point__table__tbody__row-number">3</td>
-                        <td class="delivery-box__point__table__tbody__client">Моспосуда</td>
-                        <td class="delivery-box__point__table__tbody__address">Проспект Буденого д.37</td>
-                        <td class="delivery-box__point__table__tbody__time"></td>
-                        <td class="delivery-box__point__table__tbody__size">28к</td>
-                        <td class="delivery-box__point__table__tbody__driver-note"></td>
-                        <td class="delivery-box__point__table__tbody__manager">Хошаба</td>
-                    </tr>
-
-                    <tr>
-                        <td class="delivery-box__point__table__tbody__row-number">4</td>
-                        <td class="delivery-box__point__table__tbody__client">Поларшинова</td>
-                        <td class="delivery-box__point__table__tbody__address">Деловые линии </td>
-                        <td class="delivery-box__point__table__tbody__time"></td>
-                        <td class="delivery-box__point__table__tbody__size">4к</td>
-                        <td class="delivery-box__point__table__tbody__driver-note"></td>
-                        <td class="delivery-box__point__table__tbody__manager">Генукова</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+</div>
 </div> <!-- end of delivery -->
+<?php } ?>

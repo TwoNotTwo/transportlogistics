@@ -2,16 +2,23 @@
 
 namespace common\modules\transportlogistics\frontend\controllers;
 
+use Yii;
+use yii\web\Controller;
+use yii\helpers\ArrayHelper;
 use common\modules\transportlogistics\backend\controllers\DriverController;
 use common\modules\transportlogistics\common\models\TransportlogisticsClient;
 use common\modules\transportlogistics\common\models\TransportlogisticsRecord;
 use common\modules\transportlogistics\common\models\TransportlogisticsAddress;
 use common\modules\transportlogistics\common\models\TransportlogisticsDriver;
 use twonottwo\db_rbac\models\Profile;
-use Yii;
-use yii\web\Controller;
+
 //use  common\modules\transportlogistics\common\models\TransportlogisticsDriver;
 //use  common\modules\transportlogistics\common\models\TransportlogisticsDriver;
+/**
+ * 10 - создана менеджером
+ * 15 - водитель назначен, но не передана в доставку
+ */
+
 
 /**
  * Default controller for the `transportlogistics` module
@@ -24,6 +31,39 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
+        /*
+        if (Yii::$app->user->can('tl-role-logist')) {
+            return $this->render('logist');
+        } else {
+            if (Yii::$app->user->can('tl-role-manager')) {
+                return $this->render('manager');
+            } else {
+                if (Yii::$app->user->can('tl-role-guest')) {
+                    $recordModel = new TransportlogisticsRecord();
+                    $clientModel = new TransportlogisticsClient();
+                    $addressModel = new TransportlogisticsAddress();
+                    $driverModel = new TransportlogisticsDriver();
+                    $managerModel = new Profile();
+
+                    return $this->render('index', [
+                        'recordModel' => $recordModel,
+                        'clientModel' => $clientModel,
+                        'addressModel' => $addressModel,
+                        'driverModel' => $driverModel,
+                        'managerModel' =>$managerModel,
+                    ]);
+
+                } else {
+                    return $this->goHome();
+                }
+            }
+        }
+
+*/
+            //ArrayHelper::map(Yii::$app->authManager->getRolesByUser(Yii::$app->user->id), 'name', 'name');
+        //print_r($role);
+
+
         $recordModel = new TransportlogisticsRecord();
         $clientModel = new TransportlogisticsClient();
         $addressModel = new TransportlogisticsAddress();
@@ -37,6 +77,7 @@ class DefaultController extends Controller
             'driverModel' => $driverModel,
             'managerModel' =>$managerModel,
         ]);
+
     }
 
     public function actionCreateRequest(){
