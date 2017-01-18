@@ -49,10 +49,10 @@ class TransportlogisticsRecord extends \yii\db\ActiveRecord
             'driver_id' => 'Driver ID',
             'client_id' => 'Client ID',
             'address_id' => 'Адресс доставки',
-            'transporting_date' => 'Дата',
-            'transporting_time' => 'Время',
-            'size_cargo' => 'Объем',
-            'driver_note' => 'Примечание',
+            'transporting_date' => 'Дата доставки',
+            'transporting_time' => 'Пометка о времени',
+            'size_cargo' => 'Объем заказа',
+            'driver_note' => 'Примечание для водителя',
             'responsible_manager' => 'Менеджер',
         ];
     }

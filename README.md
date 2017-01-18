@@ -9,22 +9,18 @@ yii migrate/down  --migrationPath=@common/modules/transportlogistics/migrations/
  * transportlogistics - доступ к разделу
 
 2. tl-role-manager - менеджер
-
  * transportlogistics
  * transportlogistics/create-request - создание заявки на доставку заказа
- * transportlogistics/change-request - изменение заявки на доставку заказа
  * transportlogistics/change-the-delivery-date - перенос/изменение даты доставки
 
 3. tl-role-storekeeper - кладовщик
  * transportlogistics
- * transportlogistics/set-size-cargo - установка объема заказа
- * transportlogistics/change-size-cargo - установка объема заказа
+ * transportlogistics/set-size-cargo - заполнение поля Объем заказа
 
 4. tl-role-logist - логист
  * transportlogistics
  * transportlogistics/set-responsible-driver - назначение водителя, который везет заказ
- * transportlogistics/change-responsible-driver - смена водителя, который везет заказ
- * transportlogistics/change-the-delivery-date
+ * transportlogistics/set-the-delivery-date
 
 
 ### **FAQ**

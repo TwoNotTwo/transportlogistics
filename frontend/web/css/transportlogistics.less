@@ -5,22 +5,13 @@ body{
   height: 100vh;
 }
 
-.driver-box{
-  padding: 0;
-}
-.driver-box__select{
-  border: 1px solid rgb(204, 204, 204);
-  margin-top: 5pt;
-  width: 100%;
-  padding-top: 0;
-  padding-bottom: 0;
 
-  option{
-    padding: 3px;
-  }
-}
 
-.delivery__new-record-box{
+
+/*
+
+// создание заявки на доставку заказа
+.delivery__create-request-box{
   .panel-heading{
     padding: 2pt 15pt;
     .icon{
@@ -37,19 +28,14 @@ body{
     padding-right: 4px;
     padding-left: 4px;
     padding-bottom: 4px;
-    display: none;
+    display: block;
+    .control-label{
+      font-weight: normal;
+    }
   }
 }
 
-
-.dtn-addRecord{
-  float: right;
- // margin-right: 0.5pt;
-}
-
-//форма добавления заявки на отвоз товара
-
-.delivery__new-record-box__input-group{
+.delivery__create-request-box__input-group{
   div{
     display: inline-block;
   }
@@ -62,94 +48,52 @@ body{
       outline: 0;
     }
   }
-
-  .field-transportlogisticsclient-clientname{
-    margin-left: 1pt;
-  }
-  .field-transportlogisticsrecord-note{
-    margin-right: 0;
-  }
-}
-.field-transportlogisticsclient-clientname{
-  //width: 150pt;
-  width: 18%;
-}
-.field-transportlogisticsaddress-address{
-  //width: 200pt;
-  width: 24%;
 }
 
-.field-transportlogisticsrecord-transporting_date{
-  //width: 70pt;
-  width: 10%;
-}
-.field-transportlogisticsrecord-transporting_time{
-  //width: 70pt;
-  width: 11%;
-}
-.field-transportlogisticsrecord-size_cargo{
-  //width: 100pt;
-  width: 11.5%;
-}
-.field-transportlogisticsrecord-note{
-  //width: 191pt;
-  width: 23%;
-
-}
-
-
-.delivery__new-record-box__table{
-  width: 100%;
-  td{
-    border: 1px solid #757575;
-    padding: 2pt;
-  }
-}
-
-.delivery__new-record-box__table__thead{
-  background: @color-thead;
-  td{
-    text-align: center;
-  }
-}
-.delivery__new-record-box__table__tbody{
-  td{
-    padding: 0;
-  }
-  input{
-    width: 100%;
-    border: 0;
-  }
-}
-
-.delivery__new-record-box__client{
+//размер полей ввода - форма создания заявки на доставку заказа
+#transportlogisticsclient-clientname{
   width: 150pt;
 }
-.delivery__new-record-box__address{}
-.delivery__new-record-box__date{
-  width: 70pt;
+#transportlogisticsaddress-address{
+  width: 270pt
 }
-.delivery__new-record-box__time{
-  width: 70pt;
+
+#transportlogisticsrecord-transporting_date{
+  width: 76pt;
 }
-.delivery__new-record-box__size{
-  width: 100pt;
+#transportlogisticsrecord-transporting_time{
+  width: 106pt;
 }
-.delivery__new-record-box__note{
-  width: 130pt;
+#transportlogisticsrecord-driver_note{
+  width: 175pt;
+}
+
+.btn-create-request{
+  float: right;
+  margin-top: 25px;
+}
+
+//-- создание заявки на доставку заказа
+
+
+.driver-box{
+  padding: 0;
+}
+.driver-box__select{
+  border: 1px solid rgb(204, 204, 204);
+  margin-top: 5pt;
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  option{
+    padding: 3px;
+  }
 }
 
 
-.delivery__new-record-box__client__input{}
-.delivery__new-record-box__address__input{}
-.delivery__new-record-box__date__input{
-  text-align: center;
-}
-.delivery__new-record-box__time__input{}
-.delivery__new-record-box__size__input{}
-.delivery__new-record-box__note__input{}
 
-//------------------------------------------------
+
 .request__panel{
   margin-top: 50pt;
   .panel-heading{
@@ -168,7 +112,7 @@ body{
     padding-right: 4px;
     padding-left: 4px;
     padding-bottom: 4px;
-    display: none;
+    display: block;
   }
 }
 
@@ -265,15 +209,6 @@ body{
   float: right;
   margin-top: 4pt;
 }
-/*
-.delivery-list{
-  margin-top: 10pt;
-  overflow-x: hidden;
-  overflow-y: auto;
-  display: block;
-
-}
-*/
 .delivery-box{
   margin-bottom: 10pt;
   background: #ffffff;
@@ -335,4 +270,4 @@ body{
 .delivery-box__point__table__tbody__manager{
   width: 90pt;
   text-align: center;
-}
+}*/

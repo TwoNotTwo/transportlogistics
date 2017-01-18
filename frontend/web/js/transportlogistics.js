@@ -8,22 +8,28 @@ var address_list;
 
 $(document).ready(function(){
     welcome();
+
+    /*
     resizeDeliveryList();
     getClientAndAddressList();
+    resizeRequestHeader();
+    */
 /*
     getClientList();
     getAddressList();
 */
+
+    /*
     //показать/скрыть панель создания заявки
-    $('.delivery__new-record-box .panel-heading').on('click', function(){
-        $('.delivery__new-record-box .panel-body').toggle();
+    $('.delivery__create-request-box .panel-heading').on('click', function(){
+        $('.delivery__create-request-box .panel-body').toggle();
 
         $('.field-transportlogisticsclient-clientname input').focus();
 
-        if ($('.delivery__new-record-box .panel-heading .icon').hasClass('glyphicon-chevron-down')){
-            $('.delivery__new-record-box .panel-heading .icon').attr('class', 'icon glyphicon glyphicon-chevron-up');
+        if ($('.delivery__create-request-box .panel-heading .icon').hasClass('glyphicon-chevron-down')){
+            $('.delivery__create-request-box .panel-heading .icon').attr('class', 'icon glyphicon glyphicon-chevron-up');
         } else {
-            $('.delivery__new-record-box .panel-heading .icon').attr('class', 'icon glyphicon glyphicon-chevron-down');
+            $('.delivery__create-request-box .panel-heading .icon').attr('class', 'icon glyphicon glyphicon-chevron-down');
         }
 
         resizeDeliveryList();
@@ -64,12 +70,12 @@ $(document).ready(function(){
         }
     });
 
-    $('.delivery__new-record-box__date__input').on('focusout', function(){
+    $('.delivery__create-request-box__date__input').on('focusout', function(){
         $(this).val(dateMask($(this).val()));
     });
 
     //автозаполнение
-    /** клиент */
+    // клиент
     $('.field-transportlogisticsclient-clientname input').on('keyup', function (event) {
         if (event.keyCode != KEY_TAB && event.keyCode != KEY_SHIFT) {
             $(this).ludwig_autocomplete({
@@ -80,9 +86,8 @@ $(document).ready(function(){
             }, event);
         }
     });
-    /** клиент */
 
-    /** адрес */
+    // адрес
     $('.field-transportlogisticsaddress-address input').on('keyup', function (event) {
         if (event.keyCode != KEY_TAB && event.keyCode != KEY_SHIFT) {
             $(this).ludwig_autocomplete({
@@ -92,21 +97,22 @@ $(document).ready(function(){
             }, event);
         }
     });
-    /** адрес */
-    /** отслеживание момента заполнения input через autocomplete */
+    // отслеживание момента заполнения input через autocomplete
 
 
     $(document).bind('clickOnListItem', function (event) {
     });
 
 
-    /** отслеживание момента заполнения input через autocomplete */
+    // отслеживание момента заполнения input через autocomplete
     $(document).bind('autocompleteDone', function (event, input) {
         removeIdActiveInput();
         removeDropDownList();
     });
-
+*/
 });
+
+/*
 
     $('.form-control').on('keydown', function(event){
         if (event.keyCode == KEY_ENTER && !usingList()){
@@ -181,19 +187,10 @@ function resizeDeliveryList(){
     var body_height = $('body').height();
     var footer_height = $('.footer').height()+20;
     var nav_height = $('.navbar').height()+20;
-    var deliveryNewRecordBox_height = $('.delivery__new-record-box').height()+20;
+    var deliveryNewRecordBox_height = $('.delivery__create-request-box').height()+20;
     var toolBarTop_height = $('.toolbar-top').height();
     var request_height =$('.request__panel').height();
     var newHeightDelivery = body_height-(footer_height+nav_height+deliveryNewRecordBox_height+toolBarTop_height + request_height) -150;
-
-    /*
-    console.log('bHeight ='+ body_height);
-    console.log('fHeight ='+ footer_height);
-    console.log('navHeight ='+ nav_height);
-    console.log('deliveryNewRecordBox_height ='+ deliveryNewRecordBox_height);
-    console.log('toolBarTop_height ='+ toolBarTop_height);
-    console.log('newHeightDelivery = '+newHeightDelivery);
-    */
 
     $('.delivery').height(newHeightDelivery);
     $('.delivery-list').height(newHeightDelivery);
@@ -226,8 +223,9 @@ function resizeRequestHeader(){
     $('.request__table__thead__tr td:eq(5)').css('width', widths[5]);
     $('.request__table__thead__tr td:eq(6)').css('width', widths[6]);
     //$('.request__table__thead tr td:eq(7)').css('width', widths[7]);
-}
 
+}
+*/
 
 
 function welcome(){
