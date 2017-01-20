@@ -1,4 +1,3 @@
-
 <?php if (Yii::$app->user->can('transportlogistics/create-request')) { ?>
     <div class="panel panel-default delivery__create-request-box">
         <div class="panel-heading">Создание заявки на доставку зака
@@ -96,7 +95,7 @@
 
 <?php
 //заполненрие поля Объем заказа
-if (Yii::$app->user->can('transportlogistics/set-size-cargo')){
+if (Yii::$app->user->can('transportlogistics/set-size-cargo')) {
     ?>
     <div>жопа</div>
 
@@ -105,7 +104,7 @@ if (Yii::$app->user->can('transportlogistics/set-size-cargo')){
 
 
 <?php
-if (Yii::$app->user->can('transportlogistics/set-resposible-driver')){
+if (Yii::$app->user->can('transportlogistics/set-resposible-driver')) {
 // список нераспределенных заявок
     $records = $recordModel::find()->where(['driver_id' => null])->all();
     if (count($records) > null) {
