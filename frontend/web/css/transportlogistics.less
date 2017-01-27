@@ -1,25 +1,36 @@
 @color-thead: rgb(240, 240, 240);
+@color-border-panel: rgb(204, 204, 204);
+@color-border-table: #757575;
 
 body{
   background: #F6F6F6;
   height: 100vh;
 }
-
+.request-box{
+  //блок, в котором находится таблица с заявками
+  background: #ffffff;
+  padding: 4px;
+  border: 1px solid @color-border-panel;
+}
 .request-table{
-  width:1170px;
+  //таблица заявко
+  width:100%;
   td{
-    border: 1px solid #000000;
+    border: 1px solid @color-border-table;
   }
 }
 
-.request-table__thead{}
+.request-table__thead{
+  background: @color-thead;
+}
 .request-table__thead__tr{
 
 }
 .request-table__tbody{}
 .request-table__tbody__tr{
-  height: 20px;
+  min-height: 20px;
 }
+
 .request-table__tbody__tr__client{}
 .request-table__tbody__tr__address{}
 .request-table__tbody__tr__time{}

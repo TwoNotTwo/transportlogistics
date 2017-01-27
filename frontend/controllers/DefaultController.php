@@ -29,10 +29,9 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        
 
         /**
-         * единое место запуска, все ниобходмые данные формировать в контроллере
+         * единое место запуска, все необходмые данные формировать в контроллере
          */
         /*
                 $clients_array = $clientModel::find()->all();

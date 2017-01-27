@@ -12,21 +12,21 @@ $this->title = 'Развозки';
  * состояние у записи все сортруется и изменяется динамически
  */
 ?>
-
-<table class="request-table">
-    <thead class="request-table__thead">
-    <tr class="request-table__thead__tr">
-        <!--<td>№</td> -->
-        <td>Клиент</td>
-        <td>Адрес доставки</td>
-        <td>Время</td>
-        <td>Объем</td>
-        <td>Примечание</td>
-        <td>Менеджер</td>
-        <td>Водитель</td>
-    </tr>
-    </thead>
-    <tbody class="request-table__tbody">
+<div class="request-box">
+    <table class="request-table">
+        <thead class="request-table__thead">
+        <tr class="request-table__thead__tr">
+            <!--<td>№</td> -->
+            <td>Клиент</td>
+            <td>Адрес доставки</td>
+            <td>Время</td>
+            <td>Объем</td>
+            <td>Примечание для водителя</td>
+            <td>Менеджер</td>
+            <td>Водитель</td>
+        </tr>
+        </thead>
+        <tbody class="request-table__tbody">
         <tr class="request-table__tbody__tr">
             <td class="request-table__tbody__tr__client"></td>
             <td class="request-table__tbody__tr__address"></td>
@@ -36,5 +36,6 @@ $this->title = 'Развозки';
             <td class="request-table__tbody__tr__responsible-manager"></td>
             <td class="request-table__tbody__tr__driver"></td>
         </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
