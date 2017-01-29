@@ -6,14 +6,25 @@ body{
   background: #F6F6F6;
   height: 100vh;
 }
+
+
+.transportlogistics{
+  @media (min-width: 1200px) {
+    width: 75%;
+  }
+}
+
+
+
 .request-box{
-  //блок, в котором находится таблица с заявками
+  width: 100%;
+
   background: #ffffff;
   padding: 4px;
   border: 1px solid @color-border-panel;
 }
+
 .request-table{
-  //таблица заявко
   width:100%;
   td{
     border: 1px solid @color-border-table;
@@ -22,13 +33,17 @@ body{
 
 .request-table__thead{
   background: @color-thead;
+  text-align: center;
 }
+
 .request-table__thead__tr{
 
 }
+
 .request-table__tbody{}
-.request-table__tbody__tr{
-  min-height: 20px;
+
+.request-table__tbody__tr td{
+  height: 20px;
 }
 
 .request-table__tbody__tr__client{}
