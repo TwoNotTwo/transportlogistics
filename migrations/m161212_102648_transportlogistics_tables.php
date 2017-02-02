@@ -45,11 +45,13 @@ class m161212_102648_transportlogistics_tables extends Migration
             'order_date' => $this->string(), //дата заказа
             'order_file' => $this->string(), //ссыдка на файл с опсианием заказа - накладная
             'transporting_date' => $this->date(), //предполагаемая дата доставки
+            //'correct_transporting_date' => $this->date(), //дата на которую доставку еренесли
             'transporting_time' => $this->string(), //пометка о времени доставки
             'size_cargo' => $this->string(), //объем собранного заказа
             //'common_note' => $this->string(), //премеяание для общего пользования
             'driver_note' => $this->string(), //примечание ТОЛЬКО для водителя
             'responsible_manager' => $this->integer()->notNull(), //кто из менеджеров (сотрудников) добавил запись
+            //'number_of_date_changes' => $this->integer()->defaultValue(0),
             'stage' => $this->integer()->defaultValue(1),
             'status' => $this->smallInteger(2)->defaultValue(10),
         ], $tableOptions);
