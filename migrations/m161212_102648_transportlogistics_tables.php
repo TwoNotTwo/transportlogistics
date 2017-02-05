@@ -39,8 +39,8 @@ class m161212_102648_transportlogistics_tables extends Migration
         $this->createTable('{{%transportlogistics_record}}', [
             'id' => $this->primaryKey(),
             'driver_id' => $this->integer(),
-            'client_id' => $this->integer(),
-            'address_id' => $this->integer(),
+            'client_id' => $this->integer()->notNull(),
+            'address_id' => $this->integer()->notNull(),
             'order_number' => $this->string(), //номер заказа
             'order_date' => $this->string(), //дата заказа
             'order_file' => $this->string(), //ссыдка на файл с опсианием заказа - накладная

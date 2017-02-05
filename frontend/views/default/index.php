@@ -2,8 +2,8 @@
 
 use common\modules\transportlogistics\frontend\assets\TransportlogisticsAsset;
 
+use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
-
 
 TransportlogisticsAsset::register($this);
 $this->title = 'Развозки';
@@ -13,32 +13,14 @@ $this->title = 'Развозки';
  */
 ?>
 
-<div class="request-box">
-    <table class="request-table">
-        <thead class="request-table__thead">
-        <tr class="request-table__thead__tr">
-            <!--<td>№</td> -->
-            <td>Клиент</td>
-            <td>Адрес доставки</td>
-            <td>Время</td>
-            <td>Объем</td>
-            <td>Примечание для водителя</td>
-        </tr>
-        </thead>
-        <tbody class="request-table__tbody">
+<?php 
+    if (Yii::$app->user->can('transportlogistics/create-request')){
+        echo Html::a('Создать заявку','transportlogistics/default/create-request', ['class' => 'btn btn-primary']);
+    }
+?>
 
-        <tr class="request-table__tbody__tr">
-            <?php Html::beginForm(['default/create-request', 'id'=> 'create-request'], 'post'); ?>
-            <td class="request-table__tbody__tr__client"><?= Html::input('text', 'client', '', ['class' => '']);  ?></td>
-            <td class="request-table__tbody__tr__address"><?= Html::input('text', 'address', '', ['class' => '']);  ?></td>
-            <td class="request-table__tbody__tr__time"><?= Html::input('text', 'time', '', ['class' => '']);  ?></td>
-            <td class="request-table__tbody__tr__size-cargo"><?= Html::input('text', 'size-cargo', '', ['class' => '']);  ?></td>
-            <td class="request-table__tbody__tr__driver-note"><?= Html::input('text', 'driver-note', '', ['class' => '']);  ?></td>
-            <?php Html::endForm(); ?>
-        </tr>
-        </tbody>
-    </table>
-<!--
+
+<div class="request-box">
     <table class="request-table">
         <thead class="request-table__thead">
         <tr class="request-table__thead__tr">
@@ -63,9 +45,10 @@ $this->title = 'Развозки';
         </tr>
         </tbody>
     </table>
--->
+
 </div>
 <div>
+    
     <p>Менеджер - создание заявок на доставку заказа</p>
     <p>Наблюдатель - просмотр созданных заявок</p>
     <p>Менеджер - редактирование своих заявок</p>

@@ -40,7 +40,7 @@ class TransportlogisticsRecord extends \yii\db\ActiveRecord
         return [
             [['driver_id', 'client_id', 'address_id', 'responsible_manager', 'stage', 'status'], 'integer'],
             [['transporting_date'], 'safe'],
-            [['responsible_manager'], 'required'],
+            [['client_id', 'address_id', 'responsible_manager'], 'required'],
             [['order_number', 'order_date', 'order_file', 'transporting_time', 'size_cargo', 'driver_note'], 'string', 'max' => 255],
         ];
     }
